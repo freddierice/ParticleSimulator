@@ -17,10 +17,12 @@ if __name__ == "__main__":
 	
 	
 	parts = []
-	for i in range(0,40):
-		parts.append(Particle(r=15,m=1,q=0.1))
+	for i in range(0,15):
+		parts.append(Particle(r=15,m=1,q=0))
 		parts[i].velocity = (uniform(-100,100),uniform(-100,100),uniform(-100,100))
+		#parts[i].velocity = (0,0,0)
 		runner.add(parts[i])
+	
 	"""
 	
 	c1 = Particle(p=(10,10,0),v=(0,0,0),m=10,r=1,a=(0,0,0))
@@ -43,7 +45,7 @@ if __name__ == "__main__":
 	runner.add(p2)
 	#runner.add(p3)
 	"""
-	runner.run()
+	runner.start()
 	
 	"""
 	a = (1,1,1)
@@ -51,4 +53,10 @@ if __name__ == "__main__":
 	c = proj3(a,b)
 	print c
 	"""
+	
+	a = raw_input()
+	
+	scene = display(title='Particles Colliding2', width=1200, height=700,
+                     center=(0,0,0), background=(0,0,0))
+
 	

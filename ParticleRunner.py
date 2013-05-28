@@ -1,14 +1,16 @@
 from visual import *
 import time
+import threading
 from Tree import *
 from Vector import *
 from Particle import *
 
-class ParticleRunner():
+class ParticleRunner(threading.Thread):
 	"""Runs the Particles"""
 	
 	def __init__(self,b=None,p=None):
 		"""Initializes the runner"""
+		threading.Thread.__init__(self)
 		self.particles = p or []
 		self.bounds = b or [(-150,150),(-150,150),(-150,150)]
 	

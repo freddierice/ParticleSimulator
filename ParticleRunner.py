@@ -13,7 +13,7 @@ class ParticleRunner(threading.Thread):
 		"""Initializes the runner"""
 		threading.Thread.__init__(self)
 		self.particles = p or []
-		self.bounds = b or [(-150,150),(-150,150),(-150,150)]
+		self.bounds = b or [(-100,100),(-100,100),(-100,100)]
 		self.groups = g or []
 	
 	def add(self,p):
@@ -64,21 +64,22 @@ class ParticleRunner(threading.Thread):
 			v2 = proj3(p2.velocity,norm)
 			dot1_2 = dot3(v1,v2)
 			dot1_n = dot3(v1,norm)
+			dot2_n = dot3(v2,norm)
 			mag1 = mag3(v1)
 			mag2 = mag3(v2)
 			if(dot1_2 < 0): 
 				"""if velocities are going different directions"""
 				if(dot1_n < 0):
-					"""and the first particle is going away from the others"""
+					"""and the first particle is going away from the other"""
 					continue
 			else:
 				"""if the velocities are in the same direction"""
-				if(mag1 < mag2):
+				if abs(dot1_n) < abs(dot2_n):
 					"""p1 is going too slow"""
 					if(dot1_n > 0):
 						"""p1 is going towards p2"""
 						continue
-				if(mag1 > mag2):
+				if abs(dot1_n) > abs(dot2_n):
 					"""p2 is going to slow"""
 					if(dot1_n < 0):
 						"""p1 is going away from p2"""
@@ -139,4 +140,4 @@ class ParticleRunner(threading.Thread):
 
 	def updateGravity(self):
 		for p in self.particles:
-			p.acceleration = g
+			p.acceleration = sum3(g,p.aStart)

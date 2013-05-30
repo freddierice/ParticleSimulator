@@ -46,6 +46,4 @@ class ParticleGroup():
 			a2 = self.dampening*x/(rs*p2.mass)
 			p1.acceleration = sum3(p1.acceleration,scale3(r,a1))
 			p2.acceleration = sum3(p2.acceleration,scale3(r,a2))
-		for p in self.particles:
-			print p.acceleration
 		

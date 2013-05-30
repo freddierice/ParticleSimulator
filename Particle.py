@@ -3,16 +3,16 @@ from random import *
 from Vector import *
 
 """Globals"""
-spaceStart = (-100, -100, -100)
-spaceEnd   = ( 100,  100,  100)
+spaceStart = (-50, -50, -50)
+spaceEnd   = ( 50,  50,  50)
 minRadius  = 0.1
 maxRadius  = 10
 minMass = 5
 maxMass = 30
-Cr = 0.5 	#coefficient of restitution
+Cr = 1 	#coefficient of restitution
 wallCr = .5
 ke = 8987551787
-g = (0,0,0)
+g = (0,-9.81,0)
 
 class Particle(vis.primitives.sphere):
 	"""Particle class derived from VPython Sphere"""
@@ -23,6 +23,7 @@ class Particle(vis.primitives.sphere):
 		self.radius = r or uniform(minRadius,maxRadius)
 		self.velocity = v or (0,0,0)
 		self.acceleration = a or (0,0,0)
+		self.aStart = a or (0,0,0)
 		self.color = (uniform(0,1),uniform(0,1),uniform(0,1))
 		self.charge = q or 0
 

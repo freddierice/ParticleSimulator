@@ -8,15 +8,21 @@ from Particle import *
 class ParticleRunner(threading.Thread):
 	"""Runs the Particles"""
 	
-	def __init__(self,b=None,p=None):
+	def __init__(self,b=None,p=None,g=None):
 		"""Initializes the runner"""
 		threading.Thread.__init__(self)
 		self.particles = p or []
 		self.bounds = b or [(-150,150),(-150,150),(-150,150)]
+		self.groups = g or []
 	
 	def add(self,p):
 		"""Add a particle to the system"""
 		self.particles.append(p)
+	
+	def addGroup(self,g):
+		self.groups.append(g)
+		for p in p.particles:
+			self.add(p)
 	
 	def stop(self):
 		"""Stops the particle runner thread"""
@@ -35,12 +41,17 @@ class ParticleRunner(threading.Thread):
 			self.updateCharge()
 			self.basicCollide()
 			self.wallCollide()
+			self.doGroup()
 			
 			for p in self.particles:
 				p.velocity = sum3(p.velocity, scale3(p.acceleration,dt))
 				p.pos = sum3(p.pos, scale3(p.velocity, dt))
 			time.sleep(0.00001)
-
+	
+	def doGroup(self):
+		for g in self.groups:
+			g.updateParticles()
+	
 	def basicDoCollision(self,collisions):
 		p1 = collisions[0]
 		ps = collisions[1:]

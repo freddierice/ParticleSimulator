@@ -10,7 +10,7 @@ maxRadius  = 10
 minMass = 5
 maxMass = 30
 Cr = 0.5 	#coefficient of restitution
-wallCr = .01
+wallCr = .5
 ke = 8987551787
 g = (0,0,0)
 

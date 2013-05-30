@@ -15,10 +15,9 @@ if __name__ == "__main__":
 	
 	runner = ParticleRunner()
 	
-	
 	parts = []
-	for i in range(0,15):
-		parts.append(Particle(r=15,m=1,q=0))
+	for i in range(0,40):
+		parts.append(Particle(r=15,m=1,q=0.01))
 		parts[i].velocity = (uniform(-100,100),uniform(-100,100),uniform(-100,100))
 		#parts[i].velocity = (0,0,0)
 		runner.add(parts[i])

@@ -4,6 +4,7 @@ import threading
 from Tree import *
 from Vector import *
 from Particle import *
+from ParticleGroup import *
 
 class ParticleRunner(threading.Thread):
 	"""Runs the Particles"""
@@ -21,7 +22,7 @@ class ParticleRunner(threading.Thread):
 	
 	def addGroup(self,g):
 		self.groups.append(g)
-		for p in p.particles:
+		for p in g.particles:
 			self.add(p)
 	
 	def stop(self):

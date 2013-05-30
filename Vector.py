@@ -82,7 +82,7 @@ def dif3(a,b):
 	return (a[0]-b[0],a[1]-b[1],a[2]-b[2])
 
 def rotx(x,t):
-	return ( x[0], x[1]*cos(t) - x[2]*sin(t),x2*cos(t)+x1*sin(t) )
+	return ( x[0], x[1]*cos(t) - x[2]*sin(t),x[2]*cos(t)+x[1]*sin(t) )
 
 def roty(x,t):
 	return (x[0]*cos(t)+x[2]*sin(t),x[1],x[2]*cos(t)-x[0]*sin(t))

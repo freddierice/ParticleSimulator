@@ -3,6 +3,7 @@ import time
 from visual import *
 from Particle import *
 from ParticleRunner import *
+from ParticleGroup import *
 from random import *
 
 if __name__ == "__main__":
@@ -14,7 +15,7 @@ if __name__ == "__main__":
 	#scene.range = (25,25,25)
 	
 	runner = ParticleRunner()
-	
+	"""
 	parts = []
 	for i in range(0,40):
 		parts.append(Particle(r=15,m=1,q=0.01))
@@ -22,7 +23,7 @@ if __name__ == "__main__":
 		#parts[i].velocity = (0,0,0)
 		runner.add(parts[i])
 	
-	"""
+	
 	
 	c1 = Particle(p=(10,10,0),v=(0,0,0),m=10,r=1,a=(0,0,0))
 	c2 = Particle(p=(-10,-10,0),v=(0,0,0),m=10,r=1,a=(0,0,0))
@@ -44,6 +45,16 @@ if __name__ == "__main__":
 	runner.add(p2)
 	#runner.add(p3)
 	"""
+	
+	p1 = Particle(r=1,m=1)
+	p2 = Particle(r=1,m=1)
+	p3 = Particle(r=1,m=1)
+	p4 = Particle(r=1,m=1)
+	
+	g1 = ParticleGroup(r=5,p=[p1,p2,p3,p4],c=[(5.5,10),(5.5,10),(5.5,10),(5.5,10)],n=4)
+	
+	runner.addGroup(g1)
+	
 	runner.start()
 	
 	"""
